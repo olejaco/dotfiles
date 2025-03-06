@@ -12,6 +12,8 @@ alias history="history 1"
 
 export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"
+export SYSTEMD_EDITOR="$EDITOR"
+export VISUAL="$EDITOR"
 
 # include user-specific binaries and scripts
 export PATH="$HOME/.local/bin:$PATH"
