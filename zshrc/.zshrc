@@ -10,6 +10,8 @@ alias cdd='cd "$HOME/Documents"'
 # show all history lines
 alias history="history 1"
 
+alias waybar-reload='pkill waybar && hyprctl dispatch exec waybar'
+
 export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"
 export SYSTEMD_EDITOR="$EDITOR"
