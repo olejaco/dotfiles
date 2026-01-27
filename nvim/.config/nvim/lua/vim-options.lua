@@ -21,4 +21,9 @@ vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('v', '<leader>p', '"+p')
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
+-- Format JSON
+vim.keymap.set('n', '<leader>fj', ':%!jq .<CR>', { desc = 'Format JSON with jq' })
+vim.keymap.set('v', '<leader>fj', ':!jq .<CR>', { desc = 'Format selected JSON with jq' })
+
 vim.wo.number = true

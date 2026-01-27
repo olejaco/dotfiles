@@ -7,10 +7,16 @@ alias rm="rm -i"
 # documents shortcut
 alias cdd='cd "$HOME/Documents"'
 
+# clear terminal shortcut
+alias cc='clear'
+
 # show all history lines
 alias history="history 1"
 
 alias waybar-reload='pkill waybar && hyprctl dispatch exec waybar'
+
+# flameshot with Wayland support
+alias flameshot='QT_QPA_PLATFORM=wayland flameshot'
 
 export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"
@@ -41,6 +47,10 @@ export FZF_CTRL_T_COMMAND="fd --exclude .git --ignore-file $HOME/.my-custom-zsh/
 
 # CTRL + T: put the file content if item select is a file, or put tree command output if item selected is directory
 export FZF_CTRL_T_OPTS="--preview '[ -d {} ] && tree -C {} || bat --color=always --style=numbers {}'"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # disable CTRL + S and CTRL + Q
 stty -ixon
@@ -85,10 +95,7 @@ bindkey '^[[Z' reverse-menu-complete
 # delete characters using the "delete" key
 bindkey "^[[3~" delete-char
 
-# fzf alias: CTRL + SPACE (gadget parameters configured in the FZF_CTRL_T_COMMAND environment variable)
-bindkey "^@" fzf-file-widget
-
-. "$HOME/.asdf/asdf.sh"
+#. "$HOME/.asdf/asdf.sh"
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -101,8 +108,21 @@ source "$HOME/.my-custom-zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 # load zsh-syntax-highlighting
 source "$HOME/.my-custom-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+# fzf alias: CTRL + SPACE (gadget parameters configured in the FZF_CTRL_T_COMMAND environment variable)
+bindkey "^@" fzf-file-widget
+
 # load fzf keybindings and completions
 eval "$(fzf --zsh)"
 
 eval "$(starship init zsh)"
 
+export PATH="$HOME/.dotnet:$PATH"
+export ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/
+export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+export PATH=$HOME/.local/go/bin:$PATH
+
+# Wrapper to automatically strip TERMINFO for sudo (fixes Kitty terminal issue)
+# LOADED FROM ZSHRC
+sudo() {
+    env -u TERMINFO /usr/bin/sudo "$@"
+}
