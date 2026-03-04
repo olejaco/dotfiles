@@ -1,11 +1,15 @@
 return {
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
       "nvim-telescope/telescope.nvim",
-      "ibhagwan/fzf-lua",
-      "echasnovski/mini.pick",
+    },
+    config = true,
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+      { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Neogit Commit" },
+    },
   },
-  config = true
 }

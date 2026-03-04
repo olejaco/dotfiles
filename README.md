@@ -28,7 +28,7 @@ This repository contains configuration files for the following applications:
 
 ### Shell and Editor
 - [Zsh](https://www.zsh.org/) - Z shell configuration
-- [Neovim](https://neovim.io/) - Hyperextensible Vim-based text editor
+- [Neovim](https://neovim.io/) (with [LazyVim](https://www.lazyvim.org/)) - Hyperextensible Vim-based text editor
 - [Starship](https://starship.rs/) - The minimal, blazing-fast, and infinitely customizable prompt
 
 ## Installation
@@ -89,18 +89,18 @@ The repository is organized by application, with each directory containing the r
 ```
 .
 ├── alacritty/     # Alacritty terminal configuration
-├── backgrounds/    # Wallpapers and background images
+├── backgrounds/   # Wallpapers and background images
 ├── hyprland/      # Hyprland compositor configuration
 ├── hyprlock/      # Screen locker configuration
+├── hyprmocha/     # Hyprland Catppuccin Mocha theme configuration
 ├── hyprpaper/     # Wallpaper utility configuration
 ├── i3/            # i3 window manager configuration
 ├── kitty/         # Kitty terminal configuration
-├── nvim/          # Neovim configuration
+├── nvim/          # Neovim configuration (LazyVim)
 ├── picom/         # Picom compositor configuration
 ├── polybar/       # Polybar configuration
 ├── rofi/          # Rofi configuration
 ├── starship/      # Starship prompt configuration
-├── styles/        # Theme configurations
 ├── tmux/          # Tmux configuration
 ├── waybar/        # Waybar configuration
 ├── wofi/          # Wofi configuration
