@@ -1,11 +1,12 @@
-# list files with details
-alias ll="ls -larht"
 
 # show confirm prompt
 alias rm="rm -i"
 
 # documents shortcut
 alias cdd='cd "$HOME/Documents"'
+
+# home shortcut
+alias home='cd ~'
 
 # clear terminal shortcut
 alias cc='clear'
@@ -15,8 +16,36 @@ alias history="history 1"
 
 alias waybar-reload='pkill waybar && hyprctl dispatch exec waybar'
 
-# flameshot with Wayland support
-alias flameshot='QT_QPA_PLATFORM=wayland flameshot'
+# Compression
+compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
+alias decompress="tar -xzf"
+
+# File system
+if command -v eza &> /dev/null; then
+  alias ls='eza -lh --group-directories-first --icons=auto'
+  alias lsa='ls -a'
+  alias lt='eza --tree --level=2 --long --icons --git'
+  alias lta='lt -a'
+fi
+
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
+if command -v zoxide &> /dev/null; then
+  alias cd="zd"
+  zd() {
+    if [ $# -eq 0 ]; then
+      builtin cd ~ && return
+    elif [ -d "$1" ]; then
+      builtin cd "$1"
+    else
+      z "$@" || echo "Error: Directory not found"
+    fi
+  }
+fi
+
+open() (
+  xdg-open "$@" >/dev/null 2>&1 &
+)
 
 export EDITOR="nvim"
 export SUDO_EDITOR="$EDITOR"
@@ -116,6 +145,8 @@ eval "$(fzf --zsh)"
 
 eval "$(starship init zsh)"
 
+eval "$(zoxide init zsh)"
+
 export PATH="$HOME/.dotnet:$PATH"
 export ELECTRON_MIRROR=https://npmmirror.com/mirrors/electron/
 export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
@@ -126,3 +157,4 @@ export PATH=$HOME/.local/go/bin:$PATH
 sudo() {
     env -u TERMINFO /usr/bin/sudo "$@"
 }
+export PATH="$HOME/.local/bin:$PATH"

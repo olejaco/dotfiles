@@ -107,6 +107,46 @@ The repository is organized by application, with each directory containing the r
 └── zshrc/         # Zsh configuration
 ```
 
+## Tmux Shortcuts
+
+Prefix: `Ctrl+s`
+
+### Pane Management
+| Key | Action |
+|---|---|
+| `prefix + \` | Split pane horizontally |
+| `prefix + -` | Split pane vertically |
+| `prefix + x` | Kill pane |
+| `prefix + h/j/k/l` | Move focus left/down/up/right |
+| `Ctrl+Alt+Arrow` | Move focus in that direction (no prefix) |
+| `Ctrl+Alt+Shift+Arrow` | Resize pane in that direction (no prefix) |
+
+### Window Management
+| Key | Action |
+|---|---|
+| `prefix + c` | New window |
+| `prefix + k` | Kill window |
+| `prefix + r` | Rename window |
+| `Alt+1-9` | Jump to window by number (no prefix) |
+| `Alt+Left/Right` | Previous/next window (no prefix) |
+| `Alt+Shift+Left/Right` | Move window left/right (no prefix) |
+
+### Session Management
+| Key | Action |
+|---|---|
+| `prefix + C` | New session |
+| `prefix + K` | Kill session |
+| `prefix + R` | Rename session |
+| `prefix + P/N` | Previous/next session |
+| `Alt+Up/Down` | Previous/next session (no prefix) |
+
+### Copy Mode (Vi-style)
+| Key | Action |
+|---|---|
+| `prefix + [` | Enter copy mode |
+| `v` | Begin selection |
+| `y` | Copy selection and exit |
+
 ## License
 
 Feel free to use and modify these configurations as you see fit.
